@@ -1,5 +1,6 @@
 package com.ndustrialio.contxt.http;
 
+
 /**
  * Created by jmhunt on 5/18/16.
  */
@@ -14,4 +15,5 @@ public class ApiResponse
         StatusMessage = statusMessage;
         Data = data;
     }
+
 }

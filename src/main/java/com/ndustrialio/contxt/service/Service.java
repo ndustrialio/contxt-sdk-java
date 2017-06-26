@@ -102,12 +102,33 @@ public abstract class Service
             connection.setRequestProperty("Authorization", "Bearer " + _accessToken);
         }
 
+        try
+        {
 
-        InputStream is = connection.getInputStream();
+            BufferedReader rd = new BufferedReader(new InputStreamReader(connection.getInputStream(),
+                    Charset.forName("UTF-8")));
 
-        BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+            return new ApiResponse(connection.getResponseCode(), connection.getResponseMessage(), readAll(rd));
 
-        return new ApiResponse(connection.getResponseCode(), connection.getResponseMessage(), readAll(rd));
+
+        } catch (IOException e)
+        {
+
+            BufferedReader rd = new BufferedReader(new InputStreamReader(connection.getErrorStream(),
+                    Charset.forName("UTF-8")));
+
+            JSONObject errorMessage = new JSONObject(readAll(rd));
+
+            int errorCode = connection.getResponseCode();
+
+            if ((errorCode >= 400) && (errorCode <= 500))
+            {
+                throw new RuntimeException(errorCode + " - Client Error: " + errorMessage.getString("message"));
+            } else
+            {
+                throw new RuntimeException(errorCode + " - Server Error: " + errorMessage.getString("message"));
+            }
+        }
 
     }
 
