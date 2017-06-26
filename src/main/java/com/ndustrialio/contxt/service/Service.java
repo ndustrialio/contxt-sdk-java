@@ -15,7 +15,7 @@ import java.util.Optional;
  */
 public abstract class Service
 {
-    String _accessToken, _clientID, _clientSecret;
+    protected String _accessToken, _clientID, _clientSecret;
 
 
     public Service(String clientID, String clientSecret)
@@ -26,9 +26,9 @@ public abstract class Service
         _accessToken = getAccessToken();
     }
 
-    abstract String baseURL();
+    protected abstract String baseURL();
 
-    abstract String audience();
+    protected abstract String audience();
 
     private String getAccessToken()
     {

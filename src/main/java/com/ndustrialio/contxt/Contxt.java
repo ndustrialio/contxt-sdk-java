@@ -1,7 +1,8 @@
-package com.ndustrialio.contxt.service;
+package com.ndustrialio.contxt;
 
 import com.ndustrialio.contxt.http.ApiRequest;
 import com.ndustrialio.contxt.http.ApiResponse;
+import com.ndustrialio.contxt.service.Service;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -21,12 +22,12 @@ public class Contxt extends Service
         super(clientID, clientSecret);
     }
 
-    String baseURL()
+    protected String baseURL()
     {
         return "https://contxt.api.ndustrial.io";
     }
 
-    String audience()
+    protected String audience()
     {
         return "8qY2xJob1JAxhmVhIDLCNnGriTM9bct8";
     }
