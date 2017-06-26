@@ -2,7 +2,6 @@ package com.ndustrialio.contxt.service;
 
 import com.ndustrialio.contxt.http.ApiRequest;
 import com.ndustrialio.contxt.http.ApiResponse;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.json.JSONObject;
 
 import java.io.*;
