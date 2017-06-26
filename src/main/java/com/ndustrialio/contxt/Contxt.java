@@ -1,7 +1,8 @@
-package com.ndustrialio.contxt.service;
+package com.ndustrialio.contxt;
 
 import com.ndustrialio.contxt.http.ApiRequest;
 import com.ndustrialio.contxt.http.ApiResponse;
+import com.ndustrialio.contxt.service.Service;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

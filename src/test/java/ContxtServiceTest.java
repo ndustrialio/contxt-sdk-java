@@ -1,4 +1,4 @@
-import com.ndustrialio.contxt.service.Contxt;
+import com.ndustrialio.contxt.Contxt;
 import org.junit.Before;
 import org.junit.Test;
 

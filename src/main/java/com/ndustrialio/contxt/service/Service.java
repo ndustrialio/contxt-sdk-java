@@ -15,7 +15,7 @@ import java.util.Optional;
  */
 public abstract class Service
 {
-    String _accessToken, _clientID, _clientSecret;
+    protected String _accessToken, _clientID, _clientSecret;
 
 
     public Service(String clientID, String clientSecret)
