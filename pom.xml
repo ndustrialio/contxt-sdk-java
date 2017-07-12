@@ -18,12 +18,14 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20170516</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -35,7 +37,7 @@
                 <configuration>
                     <environmentVariables>
                         <CLIENT_ID>change me!</CLIENT_ID>
-                        <CLIENT_SECRET>change me too!</CLIENT_SECRET>
+                        <CLIENT_SECRET>change me!</CLIENT_SECRET>
                     </environmentVariables>
                 </configuration>
             </plugin>
