@@ -18,7 +18,7 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20170516</version>
-            <scope>test</scope>
+            <scope>providedgit </scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
