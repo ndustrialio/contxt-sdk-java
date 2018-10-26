@@ -1,4 +1,5 @@
 import com.ndustrialio.contxt.Contxt;
+import com.ndustrialio.contxt.service.ServiceOptions;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,7 +17,11 @@ public class ContxtServiceTest
     @Before
     public void setup()
     {
-        contxt = new Contxt(System.getenv("CLIENT_ID"), System.getenv("CLIENT_SECRET"));
+        contxt = new Contxt(
+                System.getenv("CLIENT_ID"),
+                System.getenv("CLIENT_SECRET"),
+                ServiceOptions.Builder().build()
+        );
     }
 
 
