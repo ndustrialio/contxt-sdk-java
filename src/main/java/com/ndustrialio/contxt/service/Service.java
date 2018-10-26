@@ -16,12 +16,14 @@ import java.util.Optional;
 public abstract class Service
 {
     protected String _accessToken, _clientID, _clientSecret;
+    protected ServiceOptions _options;
 
 
-    public Service(String clientID, String clientSecret)
+    public Service(String clientID, String clientSecret, ServiceOptions options)
     {
         _clientID = clientID;
         _clientSecret = clientSecret;
+        _options = options;
 
         _accessToken = getAccessToken();
     }
@@ -95,6 +97,9 @@ public abstract class Service
                         .orElse(this.baseURL()));
 
         HttpURLConnection connection = request.toHttpURLConnection();
+
+        connection.setConnectTimeout(_options.getConnectionTimeout());
+        connection.setReadTimeout(_options.getReadTimeout());
 
         // Authorize request?
         if (request.authorize())

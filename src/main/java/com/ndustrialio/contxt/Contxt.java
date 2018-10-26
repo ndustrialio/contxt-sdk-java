@@ -3,6 +3,7 @@ package com.ndustrialio.contxt;
 import com.ndustrialio.contxt.http.ApiRequest;
 import com.ndustrialio.contxt.http.ApiResponse;
 import com.ndustrialio.contxt.service.Service;
+import com.ndustrialio.contxt.service.ServiceOptions;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -17,9 +18,9 @@ import java.util.stream.StreamSupport;
  */
 public class Contxt extends Service
 {
-    public Contxt(String clientID, String clientSecret)
+    public Contxt(String clientID, String clientSecret, ServiceOptions options)
     {
-        super(clientID, clientSecret);
+        super(clientID, clientSecret, options);
     }
 
     protected String baseURL()
