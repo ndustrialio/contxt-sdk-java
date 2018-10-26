@@ -18,6 +18,11 @@ import java.util.stream.StreamSupport;
  */
 public class Contxt extends Service
 {
+    public Contxt(String clientID, String clientSecret)
+    {
+        super(clientID, clientSecret);
+    }
+
     public Contxt(String clientID, String clientSecret, ServiceOptions options)
     {
         super(clientID, clientSecret, options);

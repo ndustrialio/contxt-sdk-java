@@ -18,6 +18,9 @@ public abstract class Service
     protected String _accessToken, _clientID, _clientSecret;
     protected ServiceOptions _options;
 
+    public Service(String clientID, String clientSecret) {
+        this(clientID, clientSecret, ServiceOptions.Builder().build());
+    }
 
     public Service(String clientID, String clientSecret, ServiceOptions options)
     {
