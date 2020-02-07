@@ -123,10 +123,10 @@ public abstract class Service
 
             if ((errorCode >= 400) && (errorCode <= 500))
             {
-                throw new RuntimeException(errorCode + " - Client Error: " + errorMessage.getString("message"));
+                throw new RuntimeException(errorCode + " - Client Error: " + errorMessage.optString("message"));
             } else
             {
-                throw new RuntimeException(errorCode + " - Server Error: " + errorMessage.getString("message"));
+                throw new RuntimeException(errorCode + " - Server Error: " + errorMessage.optString("message"));
             }
         }
 
