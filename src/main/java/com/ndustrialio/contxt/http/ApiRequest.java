@@ -7,7 +7,9 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by jmhunt on 5/18/16.
@@ -37,6 +39,8 @@ public class ApiRequest
 
     private Map<String, String> _params;
 
+    private final Map<String, Set<String>> _headers;
+
     private boolean _version = true, _authorize = true;
 
 
@@ -46,6 +50,7 @@ public class ApiRequest
 
         _params = new HashMap<>();
         _body = new HashMap<>();
+        _headers = new HashMap<>();
     }
 
     public ApiRequest contentType(CONTENT_TYPE contentType)
@@ -114,6 +119,19 @@ public class ApiRequest
         return this;
     }
 
+    public Map<String, Set<String>> headers()
+    {
+        return _headers;
+    }
+
+    public ApiRequest headers(String key, String value)
+    {
+        _headers.computeIfAbsent(key, k -> new HashSet<>())
+                .add(value);
+
+        return this;
+    }
+
     public ApiRequest body(String key, String value)
     {
         _body.put(key, value);
@@ -153,6 +171,12 @@ public class ApiRequest
         HttpURLConnection ret = (HttpURLConnection) new URL(sb.toString()).openConnection();
 
         ret.setRequestMethod(_method.name());
+
+        _headers.forEach((name, values) -> {
+            if (values != null) {
+                values.forEach(value -> ret.addRequestProperty(name, value));
+            }
+        });
 
         if (!_body.isEmpty())
         {
